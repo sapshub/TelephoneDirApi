@@ -32,7 +32,7 @@ namespace TelephoneDirApi.Controllers
         public ActionResult Post([FromBody] Gender gender)
         {
             _genderRepository.InsertGender(gender.Gender_name);
-            return Ok("Gender Added Successfully");
+            return Ok("Gender Added Successfullyy");
         }
 
         // PUT: api/gender/{id}
