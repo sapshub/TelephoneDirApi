@@ -133,7 +133,7 @@ app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseHttpsRedirection();
 app.MapControllers();
 
-
+// this things add to check git work properly or not
 //app.Run(async (context) =>
 //{
 //    await context.Response.WriteAsync("Getting Response from First Middleware");
