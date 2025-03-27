@@ -1,5 +1,4 @@
 ﻿using TelephoneDirApi.Model;
-using TelephoneDirApi.ViewModel;
 
 namespace TelephoneDirApi.DAL.AuthRepository
 {

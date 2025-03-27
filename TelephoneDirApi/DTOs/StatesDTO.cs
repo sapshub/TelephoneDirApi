@@ -1,6 +1,6 @@
-﻿namespace TelephoneDirApi.ViewModel
+﻿namespace TelephoneDirApi.DTOs
 {
-    public class StatesViewModel
+    public class StatesDTO
     {
         public int StateID { get; set; }
         public string StateName { get; set; }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
 using TelephoneDirApi.DAL.BaseRepositoryy;
+using TelephoneDirApi.DTOs;
 using TelephoneDirApi.Model;
-using TelephoneDirApi.ViewModel;
 
 namespace TelephoneDirApi.DAL.CityRepostirory
 {
@@ -10,9 +10,9 @@ namespace TelephoneDirApi.DAL.CityRepostirory
     {
         public CityRepository(IConfiguration configuration) : base(configuration) { }
 
-        public List<CityViewModel> GetAllCities()
+        public List<CityDTO> GetAllCities()
         {
-            var cities = new List<CityViewModel>();
+            var cities = new List<CityDTO>();
             using (var conn = GetConnection())
             {
                 SqlCommand cmd = new SqlCommand("GetCities", conn)
@@ -23,7 +23,7 @@ namespace TelephoneDirApi.DAL.CityRepostirory
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    cities.Add(new CityViewModel
+                    cities.Add(new CityDTO
                     {
                         CityID = Convert.ToInt32(reader["CityID"]),
                         CityName = reader["CityName"].ToString(),
@@ -35,9 +35,9 @@ namespace TelephoneDirApi.DAL.CityRepostirory
             return cities;
         }
 
-        public CityViewModel GetCityById(int id)
+        public CityDTO GetCityById(int id)
         {
-            CityViewModel city = null;
+            CityDTO city = null;
             using (var conn = GetConnection())
             {
                 SqlCommand cmd = new SqlCommand("GetCities", conn)
@@ -49,7 +49,7 @@ namespace TelephoneDirApi.DAL.CityRepostirory
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    city = new CityViewModel
+                    city = new CityDTO
                     {
                         CityID = Convert.ToInt32(reader["CityID"]),
                         CityName = reader["CityName"].ToString(),

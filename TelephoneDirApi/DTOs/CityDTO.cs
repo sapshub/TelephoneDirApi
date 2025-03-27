@@ -1,6 +1,6 @@
-﻿namespace TelephoneDirApi.ViewModel
+﻿namespace TelephoneDirApi.DTOs
 {
-    public class CityViewModel
+    public class CityDTO
     {
         public int CityID { get; set; }
         public string CityName { get; set; }

@@ -1,8 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
 using TelephoneDirApi.DAL.BaseRepositoryy;
+using TelephoneDirApi.DTOs;
 using TelephoneDirApi.Model;
-using TelephoneDirApi.ViewModel;
+
 
 namespace TelephoneDirApi.DAL.StatesRepository
 {
@@ -10,9 +11,9 @@ namespace TelephoneDirApi.DAL.StatesRepository
     {
         public StateRepository(IConfiguration configuration):base(configuration) { }
         
-        public List <StatesViewModel> GetAllStates()
+        public List <StatesDTO> GetAllStates()
         {
-            var states = new List<StatesViewModel>();
+            var states = new List<StatesDTO>();
             using (var conn = GetConnection())
             {
                 SqlCommand cmd = new SqlCommand("GetStates", conn)
@@ -25,7 +26,7 @@ namespace TelephoneDirApi.DAL.StatesRepository
                 {
                     while (reader.Read())
                     {
-                        states.Add(new StatesViewModel
+                        states.Add(new StatesDTO
                         {
                             StateID = Convert.ToInt32(reader["StatesID"]),
                             StateName = reader["StateName"].ToString(),
@@ -36,9 +37,9 @@ namespace TelephoneDirApi.DAL.StatesRepository
             }
             return states;
         }
-        public StatesViewModel GetStateById(int id)
+        public StatesDTO GetStateById(int id)
         {
-            StatesViewModel state = null;
+            StatesDTO state = null;
             using (var conn = GetConnection())
             {
                 SqlCommand cmd = new SqlCommand("GetStates", conn)
@@ -52,7 +53,7 @@ namespace TelephoneDirApi.DAL.StatesRepository
                 {
                     if (reader.Read())
                     {
-                        state = new StatesViewModel
+                        state = new StatesDTO
                         {
                             StateID = Convert.ToInt32(reader["StatesID"]),
                             StateName = reader["StateName"].ToString(),
